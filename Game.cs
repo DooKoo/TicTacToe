@@ -11,15 +11,10 @@ namespace TicTacToe
 {
     class Game
     {
-        struct Player
-        {
-            public int CurrentSign;//1-cross, 2-nougth;
-            public int CoutOfWins;
-
-        }
         public int Complexity;//Сложность;
         public int Step;//Количество шагов;
-        private Player[] Players;
+        public int CoutOfWinsO;
+        public int CoutOfWinsX;
         public int NumOfParts;
         public int Win;//Победитель,0- никто, 2-nougth, 1-cross;
         private int[,] Table= new int[3,3];//0- empty, 2-nougth, 1-cross;
@@ -31,12 +26,10 @@ namespace TicTacToe
         public void FullResetGame()
         {
             ResetGame();
-            Players = new Player[2];
-            Players[0].CoutOfWins = 0;//Игрок 1;
-            Players[0].CurrentSign = 0;
-            Players[1].CoutOfWins = 0;//Игрок 2;
-            Players[1].CurrentSign = 0;
+            CoutOfWinsX = 0;
+            CoutOfWinsO = 0;
             NumOfParts = 0;
+            Step = 0;
         }
         public void ResetGame()
         {
@@ -59,7 +52,7 @@ namespace TicTacToe
         {
             return Table[x, y];
         }
-        public void GetWinner(int who)//2-nougth, 1-cross;
+        public string GetWinner(int who)//2-nougth, 1-cross;
         {
             if (
                 ((Table[0, 0] == who) && (Table[0, 1] == who) && (Table[0, 2] == who)) ||
@@ -71,14 +64,21 @@ namespace TicTacToe
                 ((Table[0, 0] == who) && (Table[1, 1] == who) && (Table[2, 2] == who)) ||
                 ((Table[0, 2] == who) && (Table[1, 1] == who) && (Table[2, 0] == who)))
             {
-                if (1 == who)
-                    Win= 1;
-                else if(2 == who)
-                    Win= 2;
+                if (who == 1)
+                {
+                    Win = 1;
+                    CoutOfWinsX++;
+                    return "X";
+                }
+                else
+                {
+                    Win = 2;
+                    CoutOfWinsO++;
+                    return "O";
+                }
             }
             else
-                Win= 0;
-            
+                return "0";
         }
         public void MakeStep(string sign, Button Butt, int inpX, int inpY)
        {
@@ -97,26 +97,15 @@ namespace TicTacToe
         }
         public void ShowStat(TextBlock sender1, TextBlock sender2)
         {
-            sender1.Text = "Игрок 1: " + Players[0].CoutOfWins;
-            sender2.Text = "Игрок 2: " + Players[1].CoutOfWins;
+            sender1.Text = "X: " + CoutOfWinsX;
+            sender2.Text = "O: " + CoutOfWinsO;
         }
-        public void CoutOfWinsUp(int sender)
+        public string ShowWinner()
         {
-            Players[sender].CoutOfWins++;
-        }
-        public string GetPlayerSign(int sender)
-        {
-            if (Players[sender].CurrentSign == 1)
+            if (Win == 1)
                 return "X";
             else
                 return "O";
-        }
-        public void SetPlayerSign(int sender, string input)
-        {
-            if (input == "X")
-                Players[sender].CurrentSign = 1;
-            else
-                Players[sender].CurrentSign = 2;
         }
     }
 }

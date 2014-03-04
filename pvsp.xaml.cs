@@ -56,26 +56,18 @@ namespace TicTacToe
     
                 if ((Game1.Win > 0) && (Game1.Step < 9))
                 {
-                    TextMessages.Text = "Игрок " + Game1.Win.ToString() + " выиграл!";
-
-                    if (Game1.Win == 1)
-                        Game1.CoutOfWinsUp(0);
-                    else
-                        Game1.CoutOfWinsUp(1);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
-
+                    TextMessages.Text = Game1.ShowWinner() + " выиграл!";                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
                     Game1.ShowStat(Text1, Text2);
-                    Reset.IsEnabled = true;
+                    Reset.IsEnabled = true;//Видимость кнопки обновления;
                     Reset.Opacity = 1.0;
                     
                 }
                 else if ((Game1.Win == 0) && (Game1.Step==8))
                 {
                     TextMessages.Text = "Ничья";
+                    Reset.IsEnabled = true;//Видимость кнопки обновления;
                     Reset.Opacity = 1.0;
-                    Reset.IsEnabled = true;
                 }
-
-
                 Game1.Step++;
             }                   
                  
@@ -88,21 +80,21 @@ namespace TicTacToe
                 SetOfButton[i].Content = "";
 
             TextMessages.Text = "";
+            Reset.IsEnabled = false;//Невидимость кнопки обновления;
             Reset.Opacity = 0.0;
-            Reset.IsEnabled = false;
             Game1.ResetGame();
             Game1.NumOfParts++;
 
             if(Game1.NumOfParts%2==1)
-                TextMessages.Text = "Игрок 2- ваш ход!";
+                TextMessages.Text = "O- ваш ход!";
             else
-                TextMessages.Text = "Игрок 1- ваш ход!";
+                TextMessages.Text = "X- ваш ход!";
         }
 
         private void TextMessages_Loaded(object sender, RoutedEventArgs e)
         {
             Design.SetStyleForTextBlock(TextMessages);
-            TextMessages.Text = "Игрок 1- ваш ход!";
+            TextMessages.Text = "X- ваш ход!";
         }
 
         private void Text_Loaded(object sender, RoutedEventArgs e)
