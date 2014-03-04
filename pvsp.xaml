@@ -1,0 +1,33 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="TicTacToe.pvsp"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+    <Grid HorizontalAlignment="Left" Height="766" VerticalAlignment="Top" Width="480" Margin="0,2,0,0">
+        <TextBlock Loaded="TextMessages_Loaded" x:Name="TextMessages" HorizontalAlignment="Left" Height="62" Margin="3,8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="475"/>
+        <Button x:Name="Cell1" Content="" HorizontalAlignment="Left" Margin="2,200,0,0" VerticalAlignment="Top" Height="170" Width="173" Tap="On_Tap"/>
+        <Button x:Name="Cell2" Content="" HorizontalAlignment="Left" Margin="156,200,0,0" VerticalAlignment="Top" Height="170" Width="173" Tap="On_Tap"/>
+        <Button x:Name="Cell3" Content="" HorizontalAlignment="Left" Margin="310,200,-3,0" VerticalAlignment="Top" Height="170" Width="173" Tap="On_Tap"/>
+        <Button x:Name="Cell6" Content="" HorizontalAlignment="Left" Margin="310,350,-3,0" VerticalAlignment="Top" Height="170" Width="173" Tap="On_Tap"/>
+        <Button x:Name="Cell5" Content="" HorizontalAlignment="Left" Margin="156,350,0,0" VerticalAlignment="Top" Height="170" Width="173" Tap="On_Tap"/>
+        <Button x:Name="Cell4" Content="" HorizontalAlignment="Left" Margin="2,350,0,0" VerticalAlignment="Top" Height="170" Width="173" Tap="On_Tap"/>
+        <Button x:Name="Cell7" Content="" HorizontalAlignment="Left" Margin="2,502,0,0" VerticalAlignment="Top" Height="170" Width="173" Tap="On_Tap"/>
+        <Button x:Name="Cell8" Content="" HorizontalAlignment="Left" Margin="156,502,0,0" VerticalAlignment="Top" Height="170" Width="173" Tap="On_Tap"/>
+        <Button x:Name="Cell9" Content="" HorizontalAlignment="Left" Margin="312,502,-5,0" VerticalAlignment="Top" Height="170" Width="173" Tap="On_Tap"/>
+        <Button IsEnabled="False" x:Name="Reset" Content="Еще раз" Opacity="0.0" Tap="Reset_Tap" HorizontalAlignment="Left" Margin="159,653,0,0" VerticalAlignment="Top" Height="88" Width="162"/>
+        <TextBlock Loaded="Text_Loaded" x:Name="Text1" HorizontalAlignment="Left" Height="54" Margin="3,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="474"/>
+        <TextBlock x:Name="Text2" HorizontalAlignment="Left" Height="62" Margin="5,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="474"/>
+    </Grid>
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+
+</phone:PhoneApplicationPage>
